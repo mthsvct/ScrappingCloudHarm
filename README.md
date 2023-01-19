@@ -1,2 +1,2 @@
-# scrappingCloudHarm
-Código que realiza o web scrapping extraindo informações de provedores da plataforma CloudHarmony 
+# Scrapping for CloudHarmony
+Código que realiza o web scrapping da plataforma CloudHarmony extraindo informações de provedores e serviços.
