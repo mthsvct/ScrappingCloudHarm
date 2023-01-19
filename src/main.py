@@ -5,7 +5,6 @@ import requests
 import os
 import pandas as pd
 
-
 # Se o arquivo não existir, cria um arquivo CSV com as colunas nome, link, description. 
 def openCSV():
     if not os.path.exists('providers.csv'):
@@ -24,23 +23,24 @@ def getDescription(block):
 def getLink(block):
     return block.find('article').find_all('p', {'class': 'prov_links'})[0].find('a', {'class': 'text_square'})['href']
 
+# Escreve no arquivo CSV.
 def writeLine(name, link):
     with open('providers.csv', 'a') as arq:
         arq.write(f"{name},{link}\n")
 
+# Salva os dados no arquivo CSV.
 def save_csv(blocos):
     openCSV()
     for i in blocos:
         writeLine(getName(i), getLink(i))
 
-
+# Abre a url, 
 html = urlopen("https://cloudharmony.com/directory")
 bs = BeautifulSoup(html, 'html.parser')
-
 blocks = bs.find_all('div', {'class': 'provider_block'})
 
-print(len(blocks))
 save_csv(blocks)
+
 
 
 
